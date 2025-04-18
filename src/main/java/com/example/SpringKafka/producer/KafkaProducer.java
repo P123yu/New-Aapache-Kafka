@@ -106,16 +106,22 @@ import java.util.concurrent.CompletableFuture;
 public class KafkaProducer {
 
     @Autowired
-    private KafkaTemplate<String, User> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
+//
+//    @Autowired
+//    private ObjectMapper objectMapper;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+//     ✅ Send a dummy User object as JSON to Kafka
+//    public void sendToTopic1(User user) throws JsonProcessingException {
+//        String json = objectMapper.writeValueAsString(user);
+//        kafkaTemplate.send("firstTopic15",user);
+//    }
 
-    // ✅ Send a dummy User object as JSON to Kafka
-    public void sendToTopic1(User user) throws JsonProcessingException {
-        String json = objectMapper.writeValueAsString(user);
-        kafkaTemplate.send("firstTopic12",user);
+
+    public void sendToTopic1(String user) throws JsonProcessingException {
+        kafkaTemplate.send("firstTopic15",user);
     }
+
 
 //
 //        try {
